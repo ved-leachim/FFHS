@@ -5,6 +5,8 @@ public class Main {
         numberLinkeList.addLast(20);
         numberLinkeList.addLast(30);
         numberLinkeList.deleteLast();
-        System.out.println(numberLinkeList.contains(10));
+        numberLinkeList.addFirst(5);
+        System.out.println(numberLinkeList.contains(5));
+        System.out.println(numberLinkeList.size());
     }
 }
