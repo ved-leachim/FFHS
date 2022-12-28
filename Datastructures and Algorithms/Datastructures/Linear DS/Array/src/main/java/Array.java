@@ -30,26 +30,29 @@ public class Array<T> {
             items = tempArray;
             items[size - 1] = item;
         }
-        items[count] = item;
-        count++;
+        items[count++] = item;
     }
 
     public void removeAt(int index) {
         if (index < 0 || index > items.length - 1)
             throw new IllegalArgumentException("This index is not valid.");
 
-        items[index] = (T)Integer.valueOf(0);
+        for (int i = index; i < count; i++){
+            items[i] = items[i + 1];
+        }
+        count--;
     }
 
     public int indexOf(T item) {
         for(int i = 0; i < items.length; i++) {
-            if (items[i].equals(item))
+            if (items[i] == item)
                 return i;
         }
         return -1;
     }
 
     public void print() {
-        System.out.println(Arrays.toString(items));
+        for (int i = 0; i < count; i++)
+            System.out.println(items[i]);
     }
 }

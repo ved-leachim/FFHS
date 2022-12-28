@@ -6,8 +6,8 @@ public class Main {
         array.insert(20);
         array.insert(30);
         array.insert(40);
-        array.insert(50);
-        array.removeAt(3);
-        System.out.println(array.indexOf(55));
+        array.removeAt(2);
+        System.out.println(array.indexOf(30));
+        array.print();
     }
 }
