@@ -99,13 +99,37 @@ public class LinkedList {
 
     public int[] toArray() {
         int[] array = new int[size];
-        var current = first;
+        var currentNode = first;
         var index = 0;
-        while (current != null) {
-            array[index++] = current.value;
-            current = current.next;
+        while (currentNode != null) {
+            array[index++] = currentNode.value;
+            currentNode = currentNode.next;
         }
         return array;
+    }
+
+    public void reverse() {
+        // [10 -> 20 -> 30]
+        // [10 <- 20 <- 30]
+        var currentNode = first;
+        Node previousNode = null;
+        Node nextNode = null;
+        while (currentNode != null) {
+            if (previousNode == null) {
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+                // Set next reference of new last node to null
+                previousNode.next = null;
+                continue;
+            }
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        var tempFirst = first;
+        first = last;
+        last = tempFirst;
     }
 
     private boolean isEmpty() {
