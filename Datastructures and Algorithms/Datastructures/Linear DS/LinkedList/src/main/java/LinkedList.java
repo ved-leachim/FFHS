@@ -14,16 +14,19 @@ import java.util.NoSuchElementException;
 public class LinkedList {
     private Node first;
     private Node last;
+    private int size;
 
     public LinkedList(int value) {
         Node initialNode = new Node(value);
         this.first = initialNode;
         this.last = initialNode;
+        size++;
     }
 
     public void addFirst(int value) {
         var newFirst = new Node(value, first);
         first = newFirst;
+        size++;
     }
 
     public void addLast(int value) {
@@ -34,6 +37,7 @@ public class LinkedList {
             last.next = newLast;
             last = newLast;
         }
+        size++;
     }
 
     public void deleteFirst() {
@@ -42,14 +46,16 @@ public class LinkedList {
 
         if (first == last) {
             first = last = null;
-            return;
         }
-        var second = first.next;
-        // The next Reference of the first Node needs to be set to null as well,
-        // when a non referenced Object has a reference to another Object,
-        // it cannot be removed by the garbage collector
-        first.next = null;
-        first = second;
+        else {
+            var second = first.next;
+            // The next Reference of the first Node needs to be set to null as well,
+            // when a non referenced Object has a reference to another Object,
+            // it cannot be removed by the garbage collector
+            first.next = null;
+            first = second;
+            size--;
+        }
     }
 
     public void deleteLast() {
@@ -59,12 +65,13 @@ public class LinkedList {
         // When LL contains only one node
         if (first == last) {
             first = last = null;
-            return;
         }
-
-        var previous = getPrevious(last);
-        last = previous;
-        last.next = null;
+        else {
+            var previous = getPrevious(last);
+            last = previous;
+            last.next = null;
+            size--;
+        }
     }
 
     public boolean contains(int value) {
@@ -86,15 +93,7 @@ public class LinkedList {
     }
 
     public int size() {
-        if (isEmpty())
-            return 0;
-
-        var currentNode = first;
-        int size = 1;
-        while (currentNode.next != null) {
-            size++;
-            currentNode = currentNode.next;
-        }
+        // Changed from O(n) to O(1)
         return size;
     }
 
