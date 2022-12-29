@@ -54,8 +54,8 @@ public class LinkedList {
             // it cannot be removed by the garbage collector
             first.next = null;
             first = second;
-            size--;
         }
+        size--;
     }
 
     public void deleteLast() {
@@ -70,8 +70,8 @@ public class LinkedList {
             var previous = getPrevious(last);
             last = previous;
             last.next = null;
-            size--;
         }
+        size--;
     }
 
     public boolean contains(int value) {
@@ -95,6 +95,17 @@ public class LinkedList {
     public int size() {
         // Changed from O(n) to O(1)
         return size;
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size];
+        var current = first;
+        var index = 0;
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+        return array;
     }
 
     private boolean isEmpty() {

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,5 +12,7 @@ public class Main {
         numberLinkeList.addFirst(5);
         System.out.println(numberLinkeList.contains(5));
         System.out.println(numberLinkeList.size());
+        var array = numberLinkeList.toArray();
+        System.out.println(Arrays.toString(array));
     }
 }
