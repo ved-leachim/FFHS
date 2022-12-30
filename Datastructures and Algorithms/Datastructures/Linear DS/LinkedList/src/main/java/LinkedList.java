@@ -132,6 +132,26 @@ public class LinkedList {
         last = tempFirst;
     }
 
+    public int getKthFromTheEnd(int k) {
+        // [10, 20, 30, 40, 50]
+        //           *       *
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        var kthNode = first;
+        var lastNode = first;
+        for (int i = 0; i < k - 1; i++) {
+            lastNode = lastNode.next;
+            if (lastNode == null)
+                throw new IllegalArgumentException();
+        }
+        while (lastNode != last) {
+            lastNode = lastNode.next;
+            kthNode = kthNode.next;
+        }
+        return kthNode.value;
+    }
+
     private boolean isEmpty() {
         if (first == null)
             return true;
