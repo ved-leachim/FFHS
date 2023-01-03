@@ -3,7 +3,7 @@ import java.util.Stack;
 public class StringReverser {
 
     public String reverse(String input) {
-        // Print the input String in reversed order using a Stack
+        // Return the reversed input String
         if (input == null)
             throw new IllegalArgumentException();
 
