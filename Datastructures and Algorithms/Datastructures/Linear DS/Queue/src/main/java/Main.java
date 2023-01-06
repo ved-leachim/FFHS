@@ -1,23 +1,21 @@
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        var queue = new ArrayQueue(5);
+        var queue = new StackQueue();
         queue.enqueue(10);
         queue.enqueue( 20);
         queue.enqueue(30);
         var start = queue.dequeue();
         queue.dequeue();
-        queue.enqueue(40);
-        queue.enqueue(50);
-        queue.enqueue(60);
-        queue.enqueue(70);
-        queue.dequeue();
-        queue.enqueue(80);
         System.out.println(start);
+        queue.enqueue(40);
+        System.out.println(queue.peek());
+        System.out.println(queue);
+        queue.dequeue();
+        queue.dequeue();
         System.out.println(queue);
     }
 
