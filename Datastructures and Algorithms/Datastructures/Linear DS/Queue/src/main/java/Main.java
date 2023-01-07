@@ -4,19 +4,26 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        var queue = new StackQueue();
+        var queue = new PriorityQueue(5);
         queue.enqueue(10);
-        queue.enqueue( 20);
+        queue.enqueue(20);
         queue.enqueue(30);
-        var start = queue.dequeue();
-        queue.dequeue();
-        System.out.println(start);
         queue.enqueue(40);
+        queue.dequeue();
         System.out.println(queue.peek());
-        System.out.println(queue);
+        queue.enqueue(50);
+        queue.enqueue(60);
         queue.dequeue();
         queue.dequeue();
-        System.out.println(queue);
+        queue.enqueue(45);
+        queue.enqueue(30);
+        System.out.println(queue.peek());
+        queue.dequeue();
+        queue.enqueue(46);
+        System.out.println(queue.peek());
+        System.out.println(queue.toString());
+
+
     }
 
     public static void reverse(Queue<Integer> queue) {
