@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class CharFinder {
 
@@ -17,6 +19,18 @@ public class CharFinder {
              if (map.get(character) == 1)
                  return character;
 
+        return Character.MIN_VALUE;
+    }
+
+    public char findFirstRepeatingChar(String str) {
+        Set<Character> set = new HashSet<>();
+
+        for (var character : str.toCharArray()) {
+            if (set.contains(character))
+                return character;
+
+            set.add(character);
+        }
         return Character.MIN_VALUE;
     }
 }
