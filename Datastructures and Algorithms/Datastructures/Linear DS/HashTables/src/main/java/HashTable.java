@@ -58,7 +58,7 @@ public class HashTable {
         var ll = entries[savingIndex];
         var kvp = getKeyValuePair(key, ll);
         if (kvp == null)
-            return "The key " + key + " does not exist in the HashTable.";
+            return null;
         return kvp.value;
     }
 
@@ -66,6 +66,8 @@ public class HashTable {
         var savingIndex = hash(key);
         var ll = entries[savingIndex];
         var kvp = getKeyValuePair(key, ll);
+        if (kvp == null)
+            throw new IllegalStateException();
         ll.remove(kvp);
     }
 
